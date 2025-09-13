@@ -1,3 +1,4 @@
+<!--Navbar.vue-->
 <template>
   <header class="bg-white shadow-md p-4 flex items-center justify-between md:justify-end">
     <!-- Botón hamburguesa (solo móvil) -->

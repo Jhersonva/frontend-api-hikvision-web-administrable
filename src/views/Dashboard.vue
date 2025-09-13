@@ -1,3 +1,4 @@
+<!--Dashboard.vue-->
 <template>
   <div class="p-6">
     <div class="max-w-6xl mx-auto">

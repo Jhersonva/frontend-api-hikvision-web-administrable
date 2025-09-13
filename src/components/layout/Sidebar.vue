@@ -1,3 +1,4 @@
+<!--Sidebar.vue-->
 <template>
   <div
     :class="[ 
@@ -10,7 +11,7 @@
     <div class="flex items-center justify-center mb-6">
       <div class="w-14 h-14 flex items-center justify-center rounded-full border-4 border-red-600 bg-gray-700">
         <img
-          src="https://scontent.fjau1-1.fna.fbcdn.net/v/t39.30808-1/451816202_2169412136763470_1188529948543286866_n.jpg?stp=c0.21.689.689a_dst-jpg_s200x200_tt6&_nc_cat=110&ccb=1-7&_nc_sid=e99d92&_nc_eui2=AeHUik4JM3FNU7UauCExI36FP6MUstZok5A_oxSy1miTkN8mU-YD-EKtU8r1ljyC_xCx5xpHluBLfs90ptPqEqQU&_nc_ohc=t8yi3INo3bAQ7kNvwHq0C0_&_nc_oc=Adnb5Fytihz2KW9Neu-Vr7FhW-iGLtejP8RagUDwyzdbcVf1-Qi5yWGXCmGztTqN7D8&_nc_zt=24&_nc_ht=scontent.fjau1-1.fna&_nc_gid=0vbxQ0AJwz78vZK-xHymkA&oh=00_AfacJgyhB4yKKBQhOXFdkAU9YDDriUNAt8S9ChsxmkcPng&oe=68C9DA97"
+          src="https://scontent.fjau3-1.fna.fbcdn.net/v/t39.30808-1/514250673_122121261242932985_5564641991239268251_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=110&ccb=1-7&_nc_sid=2d3e12&_nc_eui2=AeGHY74BaBGrRH6K9WOTQbbk7E8jKWpudYzsTyMpam51jAeLIRpFdAeB-aB9lOL2GWnVrrg3YmUHr1dn8mWpserU&_nc_ohc=rBaIs_9dfr8Q7kNvwFk6Nyd&_nc_oc=Adkj5VQQb5QPV79pLr1KxboE-aY_RMsK1mLDlzMSIU9SAydE7DelNK7Be9HdK3YJOv7YpMUchRlKmvkG1h74IUeh&_nc_zt=24&_nc_ht=scontent.fjau3-1.fna&_nc_gid=OPEat6xhwSo_IKMe6BzRxA&oh=00_AfYELM4yZ5Bi_FTm8sWujFAIh5Aj7gFwwblHrDzswjN9fg&oe=68C9EDCE"
           alt="logo"
           class="w-10 h-10 rounded-full border-2 border-white object-cover"
         />
@@ -67,6 +68,7 @@ const menu = [
   { path: "product_installations", label: "Product Installations" },
   { path: "stores", label: "Stores" },
   { path: "contacts", label: "Contacts" },
-  { path: "contact_forms", label: "Contact Forms" }
+  { path: "contact_forms", label: "Contact Forms" },
+  { path: "image_categories", label: "Gestión de Imagenes" }
 ];
 </script>

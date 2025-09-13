@@ -1,14 +1,20 @@
+<!--Layout.vue-->
 <template>
-  <div class="flex min-h-screen">
-    <!-- Sidebar -->
-    <Sidebar :isOpen="isOpen" @toggle="toggleSidebar" />
-    <!-- Contenido principal -->
-    <div class="flex-1 bg-gray-100">
-        <!-- Navbar -->
-        <Navbar @toggleSidebar="toggleSidebar" />
+  <div class="flex h-screen overflow-hidden">
+    <!-- Sidebar con scroll propio -->
+    <div class="h-full overflow-y-auto">
+      <Sidebar :isOpen="isOpen" @toggle="toggleSidebar" />
+    </div>
 
-      <!-- Aquí se muestra el contenido (dashboard, users, etc.) -->
-      <router-view />
+    <!-- Contenido principal con scroll propio -->
+    <div class="flex-1 flex flex-col bg-gray-100 overflow-hidden">
+      <!-- Navbar fijo -->
+      <Navbar @toggleSidebar="toggleSidebar" />
+
+      <!-- Contenido scrolleable -->
+      <main class="flex-1 overflow-y-auto p-6">
+        <router-view />
+      </main>
     </div>
   </div>
 </template>

@@ -1,3 +1,4 @@
+<!--src/modules/Users.vue-->
 <template>
   <ModuleCard title="Users">
     <p class="text-gray-600">Aquí va la lógica para listar, crear, editar y eliminar usuarios.</p>

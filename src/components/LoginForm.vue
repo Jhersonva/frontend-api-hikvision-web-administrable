@@ -1,3 +1,4 @@
+<!--src/components/layout/LoginForm.vue-->
 <template>
   <div class="min-h-screen flex items-center justify-center bg-gray-900 px-4">
     <div class="w-full max-w-md bg-gray-800 rounded-2xl shadow-2xl p-8 border border-gray-700">

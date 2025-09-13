@@ -1,3 +1,4 @@
+<!--src/components/common/ModulePlaceholder.vue-->
 <template>
   <div class="p-6">
     <div class="max-w-4xl mx-auto">

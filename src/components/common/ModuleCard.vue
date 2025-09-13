@@ -1,3 +1,4 @@
+<!--src/components/common/ModuleCard.vue-->
 <template>
   <router-link :to="to" class="block">
     <div class="p-5 rounded-xl shadow-md hover:shadow-lg transition transform hover:-translate-y-1 bg-white border border-gray-200">
