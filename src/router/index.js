@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import AboutUs from "../modules/AboutUs.vue";
+import Features from "../modules/Features.vue";
+import Carousels from "../modules/Carousels.vue";
 import ImageCategories from "../modules/ImageCategories.vue";
 import SocialNetworks from "../modules/SocialNetworks.vue";
 import ContactInformationCompany from "../modules/ContactInformationCompany.vue";
@@ -32,6 +35,21 @@ const children = [
     path: "social_networks",
     component: SocialNetworks,
     meta: { title: "Social Networks" }
+  },
+  {
+    path: "carousels",
+    component: Carousels,
+    meta: { title: "Carousel" }
+  },
+  {
+    path: "features",
+    component: Features,
+    meta: { title: "Features" }
+  },
+  {
+    path: "about_us",
+    component: AboutUs,
+    meta: { title: "AboutUs" }
   },
   {
     path: "image_categories",

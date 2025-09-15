@@ -91,7 +91,7 @@
                 class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg shadow-md transition-all duration-200"
             >
                 ➕ Subir Imagen
-            </button>
+            </button> <!--Tamaño ideal 128 px-->
             </div>
 
             <!-- Galería de imágenes -->
