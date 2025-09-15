@@ -1,5 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import InformationContact from "../modules/InformationContact.vue";
+import Portfolios from "../modules/Portfolios.vue";
+import PortfolioCategories from "../modules/PortfolioCategories.vue";
+import CounterServices from "../modules/CounterServices.vue";
+import Services from "../modules/Services.vue";
+import ServiceCategories from "../modules/ServiceCategories.vue";
+import VideoInformationAndSolutions from "../modules/VideoInformationAndSolutions.vue";
 import AboutUs from "../modules/AboutUs.vue";
 import Features from "../modules/Features.vue";
 import Carousels from "../modules/Carousels.vue";
@@ -50,6 +57,41 @@ const children = [
     path: "about_us",
     component: AboutUs,
     meta: { title: "AboutUs" }
+  },
+  {
+    path: "video_information_and_solutions",
+    component: VideoInformationAndSolutions,
+    meta: { title: "VideoInformationAndSolutions" }
+  },
+  {
+    path: "service_categories",
+    component: ServiceCategories,
+    meta: { title: "service_categories" }
+  },
+  {
+    path: "services",
+    component: Services,
+    meta: { title: "services" }
+  },
+  {
+    path: "counter_services",
+    component: CounterServices,
+    meta: { title: "counter_services" }
+  },
+  {
+    path: "portfolio_categories",
+    component: PortfolioCategories,
+    meta: { title: "portfolio_categories" }
+  },
+  {
+    path: "portfolios",
+    component: Portfolios,
+    meta: { title: "portfolios" }
+  },
+  {
+    path: "information_contact",
+    component: InformationContact,
+    meta: { title: "information_contact" }
   },
   {
     path: "image_categories",

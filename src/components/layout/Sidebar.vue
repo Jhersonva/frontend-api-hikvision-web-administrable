@@ -123,6 +123,7 @@ const menu = [
       { path: "carousels", label: "Carousels" },
       { path: "features", label: "Features" },
       { path: "about_us", label: "Sobre Nostros" },
+      { path: "video_information_and_solutions", label: "Video Informativo y Soluciones" },
       { path: "payment_plan", label: "Planes de Pago" },
       { path: "choose_us", label: "¿Por qué elegirnos?" },
       { path: "testimonials", label: "Testimonios" },
