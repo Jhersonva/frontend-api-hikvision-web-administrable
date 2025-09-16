@@ -2,7 +2,6 @@ import axios from "axios";
 
 const API_URL = "http://127.0.0.1:8000/api/admin/features";
 
-// ⚠️ Aquí defines cómo obtienes tu token
 const getToken = () => localStorage.getItem("token");
 
 const api = axios.create({

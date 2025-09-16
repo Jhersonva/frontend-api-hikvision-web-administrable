@@ -1,5 +1,5 @@
 // src/api/testimonialsService.js
-import api from "./api"; // tu archivo con la instancia de axios
+import api from "./api"; 
 
 // Obtener todos los testimonios
 export const getTestimonials = async () => {

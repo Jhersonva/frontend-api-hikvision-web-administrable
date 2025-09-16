@@ -72,9 +72,9 @@ const handleRegister = async () => {
       email: email.value,
       password: password.value,
     });
-    alert(res.message || "✅ Usuario registrado");
+    alert(res.message || "Usuario registrado");
   } catch (e) {
-    alert("❌ Error en registro");
+    alert("Error en registro");
   }
 };
 </script>

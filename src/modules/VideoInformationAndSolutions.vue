@@ -117,7 +117,7 @@ const updateData = async () => {
 
     const updated = await updateVideoInfo(formData);
     videoInfo.value = updated;
-    alert("Información actualizada correctamente ✅");
+    alert("Información actualizada correctamente");
   } catch (error) {
     console.error("Error al actualizar información del video:", error);
     alert("Error al actualizar");

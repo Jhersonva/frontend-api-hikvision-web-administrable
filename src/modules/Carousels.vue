@@ -162,8 +162,8 @@ const fetchCarousels = async () => {
 };
 
 const showCreateForm = () => {
-  resetForm(); // primero limpio
-  isCreating.value = true; // recién después lo abro
+  resetForm(); 
+  isCreating.value = true; 
 };
 
 const handleFileChange = (e) => {
@@ -184,7 +184,7 @@ const createItem = async () => {
     await fetchCarousels();
     resetForm();
   } catch (error) {
-    console.error("❌ Error creando carousel:", error);
+    console.error("Error creando carousel:", error);
   }
 };
 
@@ -211,7 +211,7 @@ const updateItem = async () => {
     await fetchCarousels();
     resetForm();
   } catch (error) {
-    console.error("❌ Error actualizando carousel:", error);
+    console.error("Error actualizando carousel:", error);
   }
 };
 
@@ -221,7 +221,7 @@ const removeCarousel = async (id) => {
     await deleteCarousel(id);
     await fetchCarousels();
   } catch (error) {
-    console.error("❌ Error eliminando carousel:", error);
+    console.error("Error eliminando carousel:", error);
   }
 };
 

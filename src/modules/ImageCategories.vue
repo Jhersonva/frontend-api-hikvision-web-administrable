@@ -176,7 +176,7 @@ const fetchCategories = async () => {
     });
 
   } catch (error) {
-    console.error("❌ Error al obtener categorías:", error);
+    console.error("Error al obtener categorías:", error);
   }
 };
 
@@ -186,7 +186,7 @@ const fetchImages = async () => {
     const { data } = await getImages();
     images.value = data;
   } catch (error) {
-    console.error("❌ Error al obtener imágenes:", error);
+    console.error("Error al obtener imágenes:", error);
   }
 };
 
@@ -202,7 +202,7 @@ const createCategory = async () => {
     await fetchCategories();
     resetForm();
   } catch (error) {
-    console.error("❌ Error al crear categoría:", error);
+    console.error("Error al crear categoría:", error);
   }
 };
 
@@ -219,7 +219,7 @@ const updateCategory = async () => {
     await fetchCategories();
     resetForm();
   } catch (error) {
-    console.error("❌ Error al actualizar categoría:", error);
+    console.error("Error al actualizar categoría:", error);
   }
 };
 
@@ -229,7 +229,7 @@ const deleteCategory = async (id) => {
     await deleteImageCategory(id);
     await fetchCategories();
   } catch (error) {
-    console.error("❌ Error al eliminar categoría:", error);
+    console.error("Error al eliminar categoría:", error);
   }
 };
 
@@ -246,7 +246,7 @@ const handleImageFile = (e, categoryId) => {
   newForms[categoryId].file = file;
   newForms[categoryId].preview = URL.createObjectURL(file);
 
-  imageForms.value = newForms; // Reemplazamos todo el objeto
+  imageForms.value = newForms; 
 };
 
 
@@ -263,9 +263,9 @@ const createCategoryImage = async (categoryId) => {
     formData.append("file", imageForm.file);
     await createImage(formData);
     await fetchImages();
-    imageForms.value[categoryId] = { title: "", file: null, preview: null }; // reset
+    imageForms.value[categoryId] = { title: "", file: null, preview: null }; 
   } catch (error) {
-    console.error("❌ Error al crear imagen:", error);
+    console.error("Error al crear imagen:", error);
   }
 };
 
@@ -275,7 +275,7 @@ const deleteCategoryImage = async (imageId) => {
     await apiDeleteImage(imageId);
     await fetchImages();
   } catch (error) {
-    console.error("❌ Error al eliminar imagen:", error);
+    console.error("Error al eliminar imagen:", error);
   }
 };
 

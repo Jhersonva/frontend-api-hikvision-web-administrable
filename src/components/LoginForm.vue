@@ -67,7 +67,7 @@ const handleLogin = async () => {
     router.push("/app/dashboard");
   } catch (e) {
     console.error(e);
-    alert("❌ Error en login");
+    alert("Error en login");
   } finally {
     loading.value = false;
   }

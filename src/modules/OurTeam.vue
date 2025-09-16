@@ -1,3 +1,4 @@
+<!-- modules/OurTeam.vue -->
 <template>
   <div class="p-6">
     <!-- Encabezado -->
@@ -42,25 +43,21 @@
         </select>
 
         <!-- Imagen -->
-        <!-- Imagen -->
-<div>
-  <input
-    type="file"
-    @change="handleFileChange"
-    class="block w-full text-sm text-gray-600
-           file:mr-4 file:py-2 file:px-4
-           file:rounded-full file:border-0
-           file:text-sm file:font-semibold
-           file:bg-blue-50 file:text-blue-600
-           hover:file:bg-blue-100 cursor-pointer"
-  />
-
-<div v-if="form.img_our_team_url" class="mt-2">
-  <img :src="form.img_our_team_url" alt="Imagen actual" class="w-32 h-32 object-cover rounded-lg border" />
-</div>
-
-</div>
-
+        <div>
+          <input
+            type="file"
+            @change="handleFileChange"
+            class="block w-full text-sm text-gray-600
+                   file:mr-4 file:py-2 file:px-4
+                   file:rounded-full file:border-0
+                   file:text-sm file:font-semibold
+                   file:bg-blue-50 file:text-blue-600
+                   hover:file:bg-blue-100 cursor-pointer"
+          />
+          <div v-if="form.img_our_team_url" class="mt-2">
+            <img :src="form.img_our_team_url" alt="Imagen actual" class="w-32 h-32 object-cover rounded-lg border" />
+          </div>
+        </div>
 
         <!-- Contactos -->
         <div class="flex gap-4">
@@ -100,51 +97,60 @@
     </div>
 
     <!-- Tabla -->
-    <div class="overflow-x-auto bg-white rounded-2xl shadow-md border">
-      <table class="min-w-full text-left border-collapse">
-        <thead class="bg-gray-100 text-gray-700 uppercase text-sm">
-  <tr>
-    <th class="px-6 py-3 border-b">ID</th>
-    <th class="px-6 py-3 border-b">Foto</th> <!-- 👈 nueva columna -->
-    <th class="px-6 py-3 border-b">Nombre</th>
-    <th class="px-6 py-3 border-b">Especialidad</th>
-    <th class="px-6 py-3 border-b text-center">Contactos</th>
-    <th class="px-6 py-3 border-b text-center">Acciones</th>
-  </tr>
-</thead>
-<tbody>
-  <tr v-for="member in team" :key="member.id" class="hover:bg-gray-50 transition-colors">
-    <td class="px-6 py-3 border-b">{{ member.id }}</td>
-    <td class="px-6 py-3 border-b">
-      <img :src="member.img_our_team" alt="Foto" class="w-16 h-16 object-cover rounded-full border" />
-    </td>
-    <td class="px-6 py-3 border-b font-medium text-gray-800">{{ member.name_employee }}</td>
-    <td class="px-6 py-3 border-b">{{ member.specialty_category }}</td>
-    <td class="px-6 py-3 border-b text-center space-x-2">
-      <a :href="member.contacts.whatsapp.url" target="_blank" class="text-green-500 hover:underline">WhatsApp</a>
-      <a :href="member.contacts.celular.url" class="text-blue-500 hover:underline">Celular</a>
-    </td>
-    <td class="px-6 py-3 border-b text-center space-x-2">
-      <button
-        @click="editMember(member)"
-        class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1 rounded-lg shadow transition-all duration-200"
-      >
-        ✏️ Editar
-      </button>
-      <button
-        @click="removeMember(member.id)"
-        class="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded-lg shadow transition-all duration-200"
-      >
-        🗑️ Eliminar
-      </button>
-    </td>
-  </tr>
-</tbody>
-
+    <div class="overflow-x-auto bg-white rounded-2xl shadow-md border border-gray-200">
+      <table class="w-full text-sm text-left text-gray-600">
+        <thead class="bg-gray-100 text-gray-700 text-sm uppercase">
+          <tr>
+            <th class="px-6 py-3">#</th>
+            <th class="px-6 py-3">Foto</th>
+            <th class="px-6 py-3">Nombre</th>
+            <th class="px-6 py-3">Especialidad</th>
+            <th class="px-6 py-3 text-center">Contactos</th>
+            <th class="px-6 py-3 text-center">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="(member, index) in team"
+            :key="member.id"
+            class="border-b hover:bg-gray-50"
+          >
+            <td class="px-6 py-3">{{ index + 1 }}</td>
+            <td class="px-6 py-3">
+              <img :src="member.img_our_team" alt="Foto" class="w-16 h-16 object-cover rounded-full border" />
+            </td>
+            <td class="px-6 py-3 font-medium text-gray-900">{{ member.name_employee }}</td>
+            <td class="px-6 py-3">{{ member.specialty_category }}</td>
+            <td class="px-6 py-3 text-center space-x-2">
+              <a :href="member.contacts.whatsapp.url" target="_blank" class="text-green-500 hover:underline">WhatsApp</a>
+              <a :href="member.contacts.celular.url" class="text-blue-500 hover:underline">Celular</a>
+            </td>
+            <td class="px-6 py-3 text-center space-x-2">
+              <button
+                @click="editMember(member)"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1.5 rounded-lg shadow transition-all duration-200"
+              >
+                ✏️ Editar
+              </button>
+              <button
+                @click="removeMember(member.id)"
+                class="bg-red-500 hover:bg-red-600 text-white px-4 py-1.5 rounded-lg shadow transition-all duration-200"
+              >
+                🗑️ Eliminar
+              </button>
+            </td>
+          </tr>
+          <tr v-if="team.length === 0">
+            <td colspan="6" class="px-6 py-4 text-center text-gray-500">
+              No hay miembros registrados en el equipo.
+            </td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
 </template>
+
 
 <script setup>
 import { ref, onMounted } from "vue";
@@ -164,8 +170,8 @@ const form = ref({
   specialty_category_id: "",
   whatsapp: "",
   celular: "",
-  img_our_team_file: null, // 👈 archivo
-  img_our_team_url: null,  // 👈 url existente o preview
+  img_our_team_file: null, 
+  img_our_team_url: null, 
 });
 
 
@@ -197,7 +203,7 @@ const handleFileChange = (e) => {
   const file = e.target.files[0];
   if (file) {
     form.value.img_our_team_file = file;
-    form.value.img_our_team_url = URL.createObjectURL(file); // preview local
+    form.value.img_our_team_url = URL.createObjectURL(file);
   }
 };
 
@@ -205,7 +211,7 @@ const handleFileChange = (e) => {
 const handleSubmit = async () => {
   const payload = {
     ...form.value,
-    img_our_team: form.value.img_our_team_file, // el archivo real
+    img_our_team: form.value.img_our_team_file, 
   };
 
   if (isEditing.value) {
@@ -229,7 +235,6 @@ const editMember = (member) => {
   form.value.whatsapp = member.contacts.whatsapp.value || "";
   form.value.celular = member.contacts.celular.value || "";
 
-  // 👇 usar img_our_team (del backend)
   form.value.img_our_team_url = member.img_our_team || null;
 
   isEditing.value = true;
@@ -265,6 +270,4 @@ const resetForm = () => {
   isEditing.value = false;
   editingId.value = null;
 };
-
-
 </script>

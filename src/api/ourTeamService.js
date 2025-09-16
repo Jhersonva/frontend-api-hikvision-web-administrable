@@ -16,8 +16,8 @@ export const createOurTeamMember = async (data) => {
     const formData = new FormData();
     formData.append("name_employee", data.name_employee);
     formData.append("id_specialty_category", data.specialty_category_id);
-    formData.append("contact_value_whatsapp", data.whatsapp); // 👈 directo
-    formData.append("contact_value_celular", data.celular);   // 👈 directo
+    formData.append("contact_value_whatsapp", data.whatsapp); 
+    formData.append("contact_value_celular", data.celular);   
 
     if (data.img_our_team instanceof File) {
       formData.append("img_our_team", data.img_our_team);
@@ -26,7 +26,7 @@ export const createOurTeamMember = async (data) => {
     const response = await api.post("/our-team", formData);
     return response.data;
   } catch (error) {
-    console.error("❌ Error creating team member:", error.response?.data || error);
+    console.error("Error creating team member:", error.response?.data || error);
     throw error;
   }
 };
@@ -47,7 +47,7 @@ export const updateOurTeamMember = async (id, data) => {
     const response = await api.post(`/our-team/${id}`, formData);
     return response.data;
   } catch (error) {
-    console.error("❌ Error updating team member:", error.response?.data || error);
+    console.error("Error updating team member:", error.response?.data || error);
     throw error;
   }
 };
@@ -57,7 +57,7 @@ export const deleteOurTeamMember = async (id) => {
     const response = await api.delete(`/our-team/${id}`);
     return response.data;
   } catch (error) {
-    console.error("❌ Error deleting team member:", error);
+    console.error("Error deleting team member:", error);
     throw error;
   }
 };

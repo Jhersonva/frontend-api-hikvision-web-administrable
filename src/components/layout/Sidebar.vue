@@ -125,6 +125,14 @@ const menu = [
   },
   {
     group: true,
+    label: "Contacto",
+    children: [
+      { path: "contacts", label: "Info. de Formulario de Contacto" },
+      { path: "contact_forms", label: "Formulario de Contacto" },
+    ],
+  },
+  {
+    group: true,
     label: "Más Secciones",
     children: [
       { path: "information_contact", label: "Información Contacto" },
@@ -141,8 +149,6 @@ const menu = [
       { path: "banner_pages", label: "Banners" },
       { path: "blogs", label: "Blogs" },
       { path: "stores", label: "Tienda" },
-      { path: "contacts", label: "Contactos" },
-      { path: "contact_forms", label: "Formularios" },
       { path: "image_categories", label: "Galería de Imágenes" },
     ],
   },

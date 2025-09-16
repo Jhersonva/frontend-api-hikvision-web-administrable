@@ -1,5 +1,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import FormContact from "../modules/FormContact.vue";
+import Contact from "../modules/Contact.vue";
+import Blog from "../modules/Blog.vue";
+import BannerPage from "../modules/BannerPage.vue";
+import Faqs from "../modules/Faqs.vue";
+import Partners from "../modules/Partners.vue";
 import OurTeam from "../modules/OurTeam.vue";
 import SpecialtyCategories from "../modules/SpecialtyCategories.vue";
 import Testimonials from "../modules/Testimonials.vue";
@@ -122,6 +128,36 @@ const children = [
     path: "our_teams",
     component: OurTeam,
     meta: { title: "our_teams" }
+  },
+  {
+    path: "partners",
+    component: Partners,
+    meta: { title: "partners" }
+  },
+  {
+    path: "faqs",
+    component: Faqs,
+    meta: { title: "faqs" }
+  },
+  {
+    path: "banner_pages",
+    component: BannerPage,
+    meta: { title: "banner_pages" }
+  },
+  {
+    path: "blogs",
+    component: Blog,
+    meta: { title: "blogs" }
+  },
+  {
+    path: "contacts",
+    component: Contact,
+    meta: { title: "contacts" }
+  },
+  {
+    path: "contact_forms",
+    component: FormContact,
+    meta: { title: "contact_forms" }
   },
   {
     path: "image_categories",

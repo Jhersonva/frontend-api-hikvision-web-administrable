@@ -154,7 +154,7 @@ const fetchPortfolios = async () => {
   try {
     portfolios.value = await portfolioService.getPortfolios();
   } catch (error) {
-    console.error("❌ Error al cargar portfolios:", error);
+    console.error("Error al cargar portfolios:", error);
   }
 };
 
@@ -162,7 +162,7 @@ const fetchCategories = async () => {
   try {
     categories.value = await getPortfolioCategories();
   } catch (error) {
-    console.error("❌ Error al cargar categorías:", error);
+    console.error("Error al cargar categorías:", error);
   }
 };
 
@@ -190,7 +190,7 @@ const createItem = async () => {
     await fetchPortfolios();
     resetForm();
   } catch (error) {
-    console.error("❌ Error al crear portfolio:", error);
+    console.error("Error al crear portfolio:", error);
   }
 };
 

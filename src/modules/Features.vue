@@ -174,7 +174,7 @@ const createItem = async () => {
     await fetchFeatures();
     closeForm();
   } catch (error) {
-    console.error("❌ Error creando feature:", error);
+    console.error("Error creando feature:", error);
   }
 };
 
@@ -200,7 +200,7 @@ const updateItem = async () => {
     await fetchFeatures();
     closeForm();
   } catch (error) {
-    console.error("❌ Error actualizando feature:", error);
+    console.error("Error actualizando feature:", error);
   }
 };
 
@@ -210,7 +210,7 @@ const removeFeature = async (id) => {
     await deleteFeature(id);
     await fetchFeatures();
   } catch (error) {
-    console.error("❌ Error eliminando feature:", error);
+    console.error("Error eliminando feature:", error);
   }
 };
 

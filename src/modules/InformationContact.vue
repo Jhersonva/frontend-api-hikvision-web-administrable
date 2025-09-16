@@ -140,9 +140,9 @@ const updateInfo = async () => {
 
     const updated = await updateInformationContact(formData);
     form.value = { ...updated.data };
-    alert("✅ Información de contacto actualizada correctamente");
+    alert("Información de contacto actualizada correctamente");
   } catch (error) {
-    console.error("❌ Error al actualizar:", error);
+    console.error("Error al actualizar:", error);
     alert("Error al actualizar");
   } finally {
     loading.value = false;

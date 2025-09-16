@@ -102,7 +102,7 @@
           class="bg-white p-5 rounded-2xl shadow-md border border-gray-200 hover:shadow-xl hover:scale-105 transition-transform duration-300 flex flex-col justify-between"
         >
           <div class="flex items-center gap-3 mb-3">
-            <div class="w-12 h-12 flex items-center justify-center rounded-full bg-gray-100 overflow-hidden">
+            <div class="w-20 h-20 flex items-center justify-center rounded-full bg-gray-50 overflow-hidden">
               <img
                 :src="network.icon_img_url"
                 alt="icon"

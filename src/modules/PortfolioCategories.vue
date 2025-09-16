@@ -109,7 +109,7 @@ const fetchCategories = async () => {
   try {
     categories.value = await getPortfolioCategories();
   } catch (error) {
-    console.error("❌ Error al cargar categorías:", error);
+    console.error("Error al cargar categorías:", error);
   }
 };
 onMounted(fetchCategories);
@@ -131,7 +131,7 @@ const handleSubmit = async () => {
     await fetchCategories();
     cancelForm();
   } catch (error) {
-    console.error("❌ Error al guardar categoría:", error);
+    console.error("Error al guardar categoría:", error);
   }
 };
 

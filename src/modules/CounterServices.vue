@@ -192,7 +192,7 @@ const fetchCounters = async () => {
   try {
     counterServices.value = await getCounterServices();
   } catch (error) {
-    console.error("❌ Error al cargar counter services:", error);
+    console.error("Error al cargar counter services:", error);
     counterServices.value = [];
   }
 };
@@ -207,7 +207,7 @@ const fetchMainImage = async () => {
       mainForm.value.mainPreview = null;
     }
   } catch (error) {
-    console.error("❌ Error al cargar main image:", error);
+    console.error("Error al cargar main image:", error);
     mainImage.value = null;
     mainForm.value.mainPreview = null;
   }
@@ -245,14 +245,13 @@ const updateMainImage = async () => {
     }
     const fd = new FormData();
     fd.append("main_img", mainForm.value.main_img);
-    // La función del servicio ya agrega _method, pero no hace daño si lo doble, así que lo dejamos en el servicio.
     await updateCounterServiceMainImage(fd);
     await fetchMainImage();
     isEditingMain.value = false;
     mainForm.value.main_img = null;
     mainForm.value.mainPreview = mainImage.value?.main_img_url || null;
   } catch (error) {
-    console.error("❌ Error actualizando main image:", error);
+    console.error("Error actualizando main image:", error);
   }
 };
 
@@ -290,7 +289,7 @@ const updateItem = async () => {
     await fetchCounters();
     resetForm();
   } catch (error) {
-    console.error("❌ Error al actualizar counter service:", error);
+    console.error("Error al actualizar counter service:", error);
   }
 };
 

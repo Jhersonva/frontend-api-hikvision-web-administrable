@@ -16,6 +16,6 @@ api.interceptors.request.use((config) => {
 });
 
 // CRUD de imágenes
-export const getImages = () => api.get("/"); // obtiene todas las imágenes
-export const createImage = (payload) => api.post("/", payload); // crear imagen
-export const deleteImage = (id) => api.delete(`/${id}`); // eliminar imagen
+export const getImages = () => api.get("/"); 
+export const createImage = (payload) => api.post("/", payload); 
+export const deleteImage = (id) => api.delete(`/${id}`); 

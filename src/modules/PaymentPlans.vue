@@ -1,3 +1,4 @@
+<!-- modules/PaymentPlans.vue -->
 <template>
   <div class="p-6">
     <!-- Encabezado -->
@@ -59,12 +60,12 @@
             type="file"
             @change="handleFileChange"
             class="col-span-2 border px-4 py-2 rounded-lg"
-            />
+          />
           <div v-if="previewImage" class="mt-3">
             <img
               :src="previewImage"
               alt="preview"
-              class="h-20 rounded-md shadow-md"
+              class="h-20 rounded-md shadow-md object-cover"
             />
           </div>
         </div>
@@ -88,37 +89,33 @@
     </div>
 
     <!-- Tabla -->
-    <div class="overflow-x-auto bg-white rounded-2xl shadow-md border">
-      <table class="min-w-full text-left border-collapse">
-        <thead class="bg-gray-100 text-gray-700 uppercase text-sm">
+    <div class="overflow-x-auto bg-white rounded-2xl shadow-md border border-gray-200">
+      <table class="w-full text-sm text-left text-gray-600">
+        <thead class="bg-gray-100 text-gray-700 text-sm uppercase">
           <tr>
-            <th class="px-6 py-3 border-b">ID</th>
-            <th class="px-6 py-3 border-b">Nombre</th>
-            <th class="px-6 py-3 border-b">Precio</th>
-            <th class="px-6 py-3 border-b">Beneficios</th>
-            <th class="px-6 py-3 border-b">Icono</th>
-            <th class="px-6 py-3 border-b text-center">Acciones</th>
+            <th class="px-6 py-3">#</th>
+            <th class="px-6 py-3">Nombre</th>
+            <th class="px-6 py-3">Precio</th>
+            <th class="px-6 py-3">Beneficios</th>
+            <th class="px-6 py-3">Icono</th>
+            <th class="px-6 py-3 text-center">Acciones</th>
           </tr>
         </thead>
         <tbody>
           <tr
-            v-for="plan in paymentPlans"
+            v-for="(plan, index) in paymentPlans"
             :key="plan.id"
-            class="hover:bg-gray-50 transition-colors"
+            class="border-b hover:bg-gray-50 transition-colors"
           >
-            <td class="px-6 py-3 border-b">{{ plan.id }}</td>
-            <td class="px-6 py-3 border-b font-medium text-gray-800">
-              {{ plan.name_plan }}
-            </td>
-            <td class="px-6 py-3 border-b font-semibold text-green-600">
-              $ {{ plan.price_plan }}
-            </td>
-            <td class="px-6 py-3 border-b">
+            <td class="px-6 py-3">{{ index + 1 }}</td>
+            <td class="px-6 py-3 font-medium text-gray-900">{{ plan.name_plan }}</td>
+            <td class="px-6 py-3 font-semibold text-green-600">$ {{ plan.price_plan }}</td>
+            <td class="px-6 py-3">
               <ul class="list-disc list-inside text-gray-700">
                 <li v-for="(item, i) in plan.list_plan" :key="i">{{ item }}</li>
               </ul>
             </td>
-            <td class="px-6 py-3 border-b">
+            <td class="px-6 py-3">
               <img
                 v-if="plan.icon_img_payment_plan"
                 :src="plan.icon_img_payment_plan"
@@ -127,23 +124,23 @@
               />
               <span v-else class="text-gray-400">Sin icono</span>
             </td>
-            <td class="px-6 py-3 border-b text-center space-x-2">
+            <td class="px-6 py-3 text-center space-x-2">
               <button
                 @click="editPlan(plan)"
-                class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1 rounded-lg shadow transition-all duration-200"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1.5 rounded-lg shadow transition-all duration-200"
               >
                 ✏️ Editar
               </button>
               <button
                 @click="removePlan(plan.id)"
-                class="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded-lg shadow transition-all duration-200"
+                class="bg-red-600 hover:bg-red-700 text-white px-4 py-1.5 rounded-lg shadow transition-all duration-200"
               >
-                🗑️ Eliminar
+                🗑 Eliminar
               </button>
             </td>
           </tr>
           <tr v-if="paymentPlans.length === 0">
-            <td colspan="6" class="text-center py-6 text-gray-500">
+            <td colspan="6" class="px-6 py-4 text-center text-gray-500">
               No hay planes registrados.
             </td>
           </tr>
@@ -152,6 +149,7 @@
     </div>
   </div>
 </template>
+
 
 <script setup>
 import { ref, onMounted } from "vue";
@@ -167,7 +165,6 @@ const handleFileChange = (e) => {
     previewImage.value = URL.createObjectURL(file);
   }
 };
-
 
 const form = ref({
   name_plan: "",
@@ -186,7 +183,7 @@ const fetchPlans = async () => {
   try {
     paymentPlans.value = await paymentPlanService.getAll();
   } catch (error) {
-    console.error("❌ Error al cargar planes:", error);
+    console.error("Error al cargar planes:", error);
   }
 };
 onMounted(fetchPlans);
@@ -226,7 +223,7 @@ const handleSubmit = async () => {
     await fetchPlans();
     cancelForm();
   } catch (error) {
-    console.error("❌ Error al guardar plan:", error.response?.data || error);
+    console.error("Error al guardar plan:", error.response?.data || error);
   }
 };
 

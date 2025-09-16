@@ -98,14 +98,14 @@ const fetchData = async () => {
   };
 };
 
-// 📌 Imagen
+// Imagen
 const handleFileChange = (e) => {
   const file = e.target.files[0];
   form.value.img_about = file;
   form.value.imgPreview = URL.createObjectURL(file);
 };
 
-// 📌 Actualizar información principal
+// Actualizar información principal
 const updateInfo = async () => {
   const fd = new FormData();
   fd.append("main_title", form.value.main_title);
@@ -118,7 +118,7 @@ const updateInfo = async () => {
   await fetchData();
 };
 
-// 📌 Lista
+// Lista
 const addItem = async () => {
   if (!newItem.value) return;
   await addAboutUsItem(newItem.value);

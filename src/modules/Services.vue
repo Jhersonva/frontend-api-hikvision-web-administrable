@@ -171,7 +171,7 @@ const fetchServices = async () => {
   try {
     services.value = await serviceApi.getServices();
   } catch (error) {
-    console.error("❌ Error al cargar servicios:", error);
+    console.error("Error al cargar servicios:", error);
   }
 };
 
@@ -179,7 +179,7 @@ const fetchCategories = async () => {
   try {
     categories.value = await getServiceCategories();
   } catch (error) {
-    console.error("❌ Error al cargar categorías:", error);
+    console.error("Error al cargar categorías:", error);
   }
 };
 
@@ -208,7 +208,7 @@ const createItem = async () => {
     await fetchServices();
     resetForm();
   } catch (error) {
-    console.error("❌ Error al crear servicio:", error);
+    console.error("Error al crear servicio:", error);
   }
 };
 

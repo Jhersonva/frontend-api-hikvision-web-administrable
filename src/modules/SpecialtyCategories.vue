@@ -1,3 +1,4 @@
+<!-- modules/SpecialtyCategories.vue -->
 <template>
   <div class="p-6">
     <!-- Encabezado -->
@@ -44,42 +45,42 @@
     </div>
 
     <!-- Tabla -->
-    <div class="overflow-x-auto bg-white rounded-2xl shadow-md border">
-      <table class="min-w-full text-left border-collapse">
-        <thead class="bg-gray-100 text-gray-700 uppercase text-sm">
+    <div class="overflow-x-auto bg-white rounded-2xl shadow-md border border-gray-200">
+      <table class="w-full text-sm text-left text-gray-600">
+        <thead class="bg-gray-100 text-gray-700 text-sm uppercase">
           <tr>
-            <th class="px-6 py-3 border-b">ID</th>
-            <th class="px-6 py-3 border-b">Especialidad</th>
-            <th class="px-6 py-3 border-b text-center">Acciones</th>
+            <th class="px-6 py-3">#</th>
+            <th class="px-6 py-3">Especialidad</th>
+            <th class="px-6 py-3 text-center">Acciones</th>
           </tr>
         </thead>
         <tbody>
           <tr
-            v-for="category in categories"
+            v-for="(category, index) in categories"
             :key="category.id"
-            class="hover:bg-gray-50 transition-colors"
+            class="border-b hover:bg-gray-50"
           >
-            <td class="px-6 py-3 border-b">{{ category.id }}</td>
-            <td class="px-6 py-3 border-b font-medium text-gray-800">
+            <td class="px-6 py-3">{{ index + 1 }}</td>
+            <td class="px-6 py-3 font-medium text-gray-900">
               {{ category.specialty_name }}
             </td>
-            <td class="px-6 py-3 border-b text-center space-x-2">
+            <td class="px-6 py-3 text-center space-x-2">
               <button
                 @click="editCategory(category)"
-                class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1 rounded-lg shadow transition-all duration-200"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-1.5 rounded-lg shadow transition-all duration-200"
               >
                 ✏️ Editar
               </button>
               <button
                 @click="removeCategory(category.id)"
-                class="bg-red-600 hover:bg-red-700 text-white px-4 py-1 rounded-lg shadow transition-all duration-200"
+                class="bg-red-500 hover:bg-red-600 text-white px-4 py-1.5 rounded-lg shadow transition-all duration-200"
               >
-                🗑️ Eliminar
+                🗑 Eliminar
               </button>
             </td>
           </tr>
           <tr v-if="categories.length === 0">
-            <td colspan="3" class="text-center py-6 text-gray-500">
+            <td colspan="3" class="px-6 py-4 text-center text-gray-500">
               No hay especialidades registradas.
             </td>
           </tr>
@@ -88,6 +89,7 @@
     </div>
   </div>
 </template>
+
 
 <script setup>
 import { ref, onMounted } from "vue";

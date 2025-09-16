@@ -152,7 +152,7 @@ const fetchCategories = async () => {
   try {
     serviceCategories.value = await getServiceCategories();
   } catch (error) {
-    console.error("❌ Error al cargar categorías:", error);
+    console.error("Error al cargar categorías:", error);
   }
 };
 
@@ -180,7 +180,7 @@ const createItem = async () => {
     await fetchCategories();
     resetForm();
   } catch (error) {
-    console.error("❌ Error al crear categoría:", error);
+    console.error("Error al crear categoría:", error);
   }
 };
 
@@ -207,7 +207,7 @@ const updateItem = async () => {
     await fetchCategories();
     resetForm();
   } catch (error) {
-    console.error("❌ Error al actualizar categoría:", error);
+    console.error("Error al actualizar categoría:", error);
   }
 };
 

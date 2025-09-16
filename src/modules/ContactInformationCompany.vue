@@ -130,7 +130,7 @@ const form = ref({
 });
 
 const loading = ref(false);
-const previewLogo = ref(null); // 👈 Previsualización inmediata
+const previewLogo = ref(null); 
 
 // Validación de File
 const isFile = (value) => typeof File !== "undefined" && value instanceof File;
@@ -144,7 +144,7 @@ onMounted(async () => {
     const data = await getContactInformationCompany();
     form.value = { ...data };
   } catch (error) {
-    console.error("❌ Error al cargar datos:", error);
+    console.error("Error al cargar datos:", error);
   }
 });
 
@@ -152,7 +152,7 @@ const onFileChange = (e) => {
   const file = e.target.files[0];
   if (file) {
     form.value.company_logo = file;
-    previewLogo.value = URL.createObjectURL(file); // 👈 Mostrar imagen seleccionada
+    previewLogo.value = URL.createObjectURL(file); 
   }
 };
 
@@ -161,9 +161,9 @@ const updateInfo = async () => {
   try {
     const updated = await updateContactInformationCompany(form.value);
     form.value = { ...updated };
-    alert("✅ Información actualizada correctamente");
+    alert("Información actualizada correctamente");
   } catch (error) {
-    console.error("❌ Error al actualizar:", error);
+    console.error("Error al actualizar:", error);
     alert("Error al actualizar");
   } finally {
     loading.value = false;
