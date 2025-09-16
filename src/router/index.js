@@ -1,5 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import OurTeam from "../modules/OurTeam.vue";
+import SpecialtyCategories from "../modules/SpecialtyCategories.vue";
+import Testimonials from "../modules/Testimonials.vue";
+import ChooseUs from "../modules/ChooseUs.vue";
+import PaymentPlans from "../modules/PaymentPlans.vue";
 import InformationContact from "../modules/InformationContact.vue";
 import Portfolios from "../modules/Portfolios.vue";
 import PortfolioCategories from "../modules/PortfolioCategories.vue";
@@ -92,6 +97,31 @@ const children = [
     path: "information_contact",
     component: InformationContact,
     meta: { title: "information_contact" }
+  },
+  {
+    path: "payment_plan",
+    component: PaymentPlans,
+    meta: { title: "payment_plan" }
+  },
+  {
+    path: "choose_us",
+    component: ChooseUs,
+    meta: { title: "choose_us" }
+  },
+  {
+    path: "testimonials",
+    component: Testimonials,
+    meta: { title: "testimonials" }
+  },
+  {
+    path: "specialty_categories",
+    component: SpecialtyCategories,
+    meta: { title: "specialty_categories" }
+  },
+  {
+    path: "our_teams",
+    component: OurTeam,
+    meta: { title: "our_teams" }
   },
   {
     path: "image_categories",

@@ -117,12 +117,20 @@ const menu = [
   },
   {
     group: true,
+    label: "Nuestro Equipo",
+    children: [
+      { path: "specialty_categories", label: "Categorías de Especialidad" },
+      { path: "our_teams", label: "Miembros del Equipo" },
+    ],
+  },
+  {
+    group: true,
     label: "Más Secciones",
     children: [
       { path: "information_contact", label: "Información Contacto" },
       { path: "carousels", label: "Carousels" },
       { path: "features", label: "Features" },
-      { path: "about_us", label: "Sobre Nostros" },
+      { path: "about_us", label: "Sobre Nosotros" },
       { path: "video_information_and_solutions", label: "Video Informativo y Soluciones" },
       { path: "payment_plan", label: "Planes de Pago" },
       { path: "choose_us", label: "¿Por qué elegirnos?" },
