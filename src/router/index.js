@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import ProductDetail from "../modules/ProductDetail.vue";
+import Products from "../modules/Products.vue";
+import ProductCategories from "../modules/ProductCategories.vue";
 import FormContact from "../modules/FormContact.vue";
 import Contact from "../modules/Contact.vue";
 import Blog from "../modules/Blog.vue";
@@ -148,6 +151,36 @@ const children = [
     path: "blogs",
     component: Blog,
     meta: { title: "blogs" }
+  },
+  {
+    path: "category_products",
+    component: ProductCategories,
+    meta: { title: "category_products" }
+  },
+  {
+    path: "products",
+    component: Products,
+    meta: { title: "products" }
+  },
+  {
+    path: "products/:id/detail",
+    name: "productDetail",
+    component: ProductDetail,
+    props: route => ({
+      productId: Number(route.params.id),   
+      productName: route.query.name || "" 
+    }),
+    meta: { title: "product_details" }
+  },
+  {
+    path: "products/:id/installation",
+    name: "productInstallation",
+    component: () => import("../modules/ProductInstallation.vue"),
+    props: route => ({
+      productId: Number(route.params.id),
+      productName: route.query.name || ""
+    }),
+    meta: { title: "product_installation" }
   },
   {
     path: "contacts",

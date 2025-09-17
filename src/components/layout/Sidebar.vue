@@ -70,7 +70,7 @@ defineProps({ isOpen: Boolean });
 defineEmits(["toggle"]);
 
 const logout = () => {
-  alert("Cerrando sesión... 🚪");
+  alert("Cerrando sesión...");
 };
 
 const menu = [
@@ -111,8 +111,6 @@ const menu = [
     children: [
       { path: "category_products", label: "Categorías" },
       { path: "products", label: "Productos" },
-      { path: "product_details", label: "Detalles" },
-      { path: "product_installations", label: "Instalaciones" },
     ],
   },
   {
