@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import SecctionTitles from "../modules/SecctionTitles.vue";
 import ProductDetail from "../modules/ProductDetail.vue";
 import Products from "../modules/Products.vue";
 import ProductCategories from "../modules/ProductCategories.vue";
@@ -47,6 +48,11 @@ const moduleRoutes = [
 const children = [
   { path: "dashboard", component: Dashboard, meta: { title: "Dashboard" } },
 
+  {
+    path: "section_titles",
+    component: SecctionTitles,
+    meta: { title: "section_titles" }
+  },
   {
     path: "contact_information_company",
     component: ContactInformationCompany,

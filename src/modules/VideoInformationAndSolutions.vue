@@ -1,71 +1,101 @@
+<!-- src/modules/VideoInformationAndSolutions.vue -->
 <template>
-  <div class="p-6">
-    <h2 class="text-2xl font-bold mb-4">Video Información y Soluciones</h2>
+  <div class="p-6 bg-gray-50 min-h-screen">
+    <h2 class="text-3xl font-bold mb-8 text-gray-800 text-center">
+      Video Información y Soluciones
+    </h2>
 
-    <!-- Vista previa -->
-    <div v-if="videoInfo" class="mb-6 bg-white shadow p-4 rounded-lg">
-      <h3 class="text-xl font-semibold">{{ videoInfo.name_information_solution }}</h3>
-      <p class="text-gray-600">{{ videoInfo.description }}</p>
+    <!-- Lista de registros -->
+    <div
+      v-for="item in videoInfo"
+      :key="item.id"
+      class="grid lg:grid-cols-2 gap-6 mb-10"
+    >
+      <!-- Vista previa -->
+      <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+          {{ item.name_information_solution }}
+        </h3>
+        <p class="text-gray-600 mb-4">
+          {{ item.description }}
+        </p>
 
-      <!-- Icono -->
-      <div v-if="videoInfo.icon_img" class="my-4">
-        <img :src="videoInfo.icon_img" alt="Icono" class="h-20 w-20 object-contain" />
-      </div>
-
-      <!-- Video de YouTube -->
-      <div class="mt-4">
-        <iframe
-          v-if="videoInfo.url_video_yt"
-          class="w-full h-64 rounded"
-          :src="embedUrl(videoInfo.url_video_yt)"
-          frameborder="0"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </div>
-
-    <!-- Formulario -->
-    <div class="bg-white shadow p-6 rounded-lg">
-      <h3 class="text-lg font-semibold mb-4">Editar Información</h3>
-      <form @submit.prevent="updateData" enctype="multipart/form-data">
-        <div class="mb-3">
-          <label class="block font-medium">Título</label>
-          <input
-            v-model="form.name_information_solution"
-            type="text"
-            class="w-full border rounded p-2"
+        <!-- Icono -->
+        <div v-if="item.icon_img" class="flex justify-center my-4">
+          <img
+            :src="item.icon_img"
+            alt="Icono"
+            class="h-24 w-24 object-contain rounded-lg border border-gray-200"
           />
         </div>
 
-        <div class="mb-3">
-          <label class="block font-medium">Descripción</label>
-          <textarea
-            v-model="form.description"
-            class="w-full border rounded p-2"
-          ></textarea>
+        <!-- Video solo para el primer registro -->
+        <div v-if="item.url_video_yt" class="mt-4">
+          <iframe
+            class="w-full h-64 rounded-lg border"
+            :src="embedUrl(item.url_video_yt)"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
         </div>
+      </div>
 
-        <div class="mb-3">
-          <label class="block font-medium">URL Video YouTube</label>
-          <input
-            v-model="form.url_video_yt"
-            type="text"
-            class="w-full border rounded p-2"
-          />
-        </div>
+      <!-- Formulario de edición -->
+      <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+        <h3 class="text-lg font-semibold mb-6 text-gray-700">
+          ✏️ Editar Registro #{{ item.id }}
+        </h3>
+        <form @submit.prevent="updateData(item.id)" enctype="multipart/form-data" class="space-y-4">
+          <!-- Solo el registro 1 puede editar url_video_yt -->
+          <div v-if="item.id === 1">
+            <label class="block font-medium mb-1 text-gray-700">URL Video YouTube</label>
+            <input
+              v-model="forms[item.id].url_video_yt"
+              type="text"
+              class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-200"
+              placeholder="https://youtube.com/..."
+            />
+          </div>
 
-        <div class="mb-3">
-          <label class="block font-medium">Icono (opcional)</label>
-          <input type="file" @change="handleFile" class="w-full" />
-        </div>
+          <div>
+            <label class="block font-medium mb-1 text-gray-700">Título</label>
+            <input
+              v-model="forms[item.id].name_information_solution"
+              type="text"
+              class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-200"
+              placeholder="Ejemplo: Transformación Digital"
+            />
+          </div>
 
-        <button
-          type="submit"
-          class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Guardar Cambios
-        </button>
-      </form>
+          <div>
+            <label class="block font-medium mb-1 text-gray-700">Descripción</label>
+            <textarea
+              v-model="forms[item.id].description"
+              class="w-full border border-gray-300 rounded-lg p-2 focus:ring focus:ring-blue-200"
+              rows="3"
+              placeholder="Agrega una descripción..."
+            ></textarea>
+          </div>
+
+          <div>
+            <label class="block font-medium mb-1 text-gray-700">Icono (opcional)</label>
+            <input
+              type="file"
+              @change="handleFile($event, item.id)"
+              class="w-full border border-gray-300 rounded-lg p-2"
+            />
+          </div>
+
+          <div class="flex justify-end">
+            <button
+              type="submit"
+              class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition"
+            >
+              💾 Guardar Cambios
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -74,59 +104,69 @@
 import { ref, onMounted } from "vue";
 import { getVideoInfo, updateVideoInfo } from "../api/videoInformationAndSolutionsService.js";
 
-const videoInfo = ref(null);
-const form = ref({
-  id: "",
-  url_video_yt: "",
-  name_information_solution: "",
-  description: "",
-});
-const file = ref(null);
+const videoInfo = ref([]);
+const forms = ref({});
+const files = ref({});
 
+// Cargar datos
 const fetchData = async () => {
   try {
     const data = await getVideoInfo();
     videoInfo.value = data;
 
-    // Cargar en formulario
-    form.value = {
-      id: data.id,
-      url_video_yt: data.url_video_yt,
-      name_information_solution: data.name_information_solution,
-      description: data.description,
-    };
+    // Inicializar formularios por registro
+    data.forEach((item) => {
+      forms.value[item.id] = {
+        url_video_yt: item.url_video_yt || "",
+        name_information_solution: item.name_information_solution,
+        description: item.description,
+      };
+      files.value[item.id] = null;
+    });
   } catch (error) {
-    console.error("Error al cargar información del video:", error);
+    console.error("Error al cargar información de videos:", error);
   }
 };
 
-const handleFile = (event) => {
-  file.value = event.target.files[0];
+// Manejar archivos por registro
+const handleFile = (event, id) => {
+  files.value[id] = event.target.files[0];
 };
 
-const updateData = async () => {
+// Actualizar un registro
+const updateData = async (id) => {
   try {
     const formData = new FormData();
-    formData.append("id", form.value.id);
-    formData.append("url_video_yt", form.value.url_video_yt);
-    formData.append("name_information_solution", form.value.name_information_solution);
-    formData.append("description", form.value.description);
-    if (file.value) {
-      formData.append("icon_img", file.value);
+    formData.append("name_information_solution", forms.value[id].name_information_solution);
+    formData.append("description", forms.value[id].description);
+
+    // Solo el primer registro envía url_video_yt
+    if (id === 1) {
+      formData.append("url_video_yt", forms.value[id].url_video_yt);
     }
 
-    const updated = await updateVideoInfo(formData);
-    videoInfo.value = updated;
-    alert("Información actualizada correctamente");
+    if (files.value[id]) {
+      formData.append("icon_img", files.value[id]);
+    }
+
+    const updated = await updateVideoInfo(id, formData);
+
+    // Reemplazar el registro en la lista
+    const index = videoInfo.value.findIndex((v) => v.id === id);
+    if (index !== -1) {
+      videoInfo.value[index] = updated;
+    }
+
+    alert("Registro actualizado correctamente");
   } catch (error) {
-    console.error("Error al actualizar información del video:", error);
-    alert("Error al actualizar");
+    console.error("Error al actualizar:", error);
+    alert("Error al actualizar registro");
   }
 };
 
 // Convertir URL de YouTube en embebido
 const embedUrl = (url) => {
-  const videoId = url.split("v=")[1]?.split("&")[0];
+  const videoId = url?.split("v=")[1]?.split("&")[0];
   return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
 };
 
