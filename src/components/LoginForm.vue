@@ -64,7 +64,11 @@ const handleLogin = async () => {
     loading.value = true;
     await auth.loginUser({ username: username.value, password: password.value });
     // al tener token, redirigimos al panel
-    router.push("/app/dashboard");
+    router.push({ path: "/loading", query: { message: "Cargando..." } });
+
+    setTimeout(() => {
+      router.push("/app/dashboard");
+    }, 1500);
   } catch (e) {
     console.error(e);
     alert("Error en login");

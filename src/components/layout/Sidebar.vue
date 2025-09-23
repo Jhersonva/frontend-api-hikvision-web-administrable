@@ -66,12 +66,38 @@
 </template>
 
 <script setup>
+import { useRouter } from "vue-router";
+import axios from "axios";
+
 defineProps({ isOpen: Boolean });
 defineEmits(["toggle"]);
 
-const logout = () => {
-  alert("Cerrando sesión...");
+const router = useRouter();
+
+const logout = async () => {
+  try {
+    const token = localStorage.getItem("token");
+
+    if (token) {
+      await axios.post("http://127.0.0.1:8000/api/admin/logout", {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+    }
+  } catch (error) {
+    console.error("Error al cerrar sesión:", error);
+  } finally {
+    localStorage.removeItem("token");
+
+    // Ir a la vista "Cerrando Sesión..."
+    router.push({ path: "/loading", query: { message: "Cerrando Sesión..." } });
+
+    // después de 1.5s redirigir al login
+    setTimeout(() => {
+      router.push("/login");
+    }, 1500);
+  }
 };
+
 
 const menu = [
   { path: "dashboard", label: "Panel" },
@@ -111,6 +137,7 @@ const menu = [
     children: [
       { path: "category_products", label: "Categorías" },
       { path: "products", label: "Productos" },
+      { path: "stores", label: "Tienda" },
     ],
   },
   {
@@ -146,7 +173,6 @@ const menu = [
       { path: "faqs", label: "Preguntas Frecuentes" },
       { path: "banner_pages", label: "Banners" },
       { path: "blogs", label: "Blogs" },
-      { path: "stores", label: "Tienda" },
       { path: "image_categories", label: "Galería de Imágenes" },
     ],
   },

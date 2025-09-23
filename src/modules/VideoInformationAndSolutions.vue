@@ -5,42 +5,7 @@
       Video Información y Soluciones
     </h2>
 
-    <!-- Lista de registros -->
-    <div
-      v-for="item in videoInfo"
-      :key="item.id"
-      class="grid lg:grid-cols-2 gap-6 mb-10"
-    >
-      <!-- Vista previa -->
-      <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
-        <h3 class="text-xl font-semibold text-gray-800 mb-2">
-          {{ item.name_information_solution }}
-        </h3>
-        <p class="text-gray-600 mb-4">
-          {{ item.description }}
-        </p>
-
-        <!-- Icono -->
-        <div v-if="item.icon_img" class="flex justify-center my-4">
-          <img
-            :src="item.icon_img"
-            alt="Icono"
-            class="h-24 w-24 object-contain rounded-lg border border-gray-200"
-          />
-        </div>
-
-        <!-- Video solo para el primer registro -->
-        <div v-if="item.url_video_yt" class="mt-4">
-          <iframe
-            class="w-full h-64 rounded-lg border"
-            :src="embedUrl(item.url_video_yt)"
-            frameborder="0"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div>
-
-      <!-- Formulario de edición -->
+    <!-- Formulario de edición -->
       <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
         <h3 class="text-lg font-semibold mb-6 text-gray-700">
           ✏️ Editar Registro #{{ item.id }}
@@ -95,6 +60,41 @@
             </button>
           </div>
         </form>
+      </div>
+
+    <!-- Lista de registros -->
+    <div
+      v-for="item in videoInfo"
+      :key="item.id"
+      class="grid lg:grid-cols-2 gap-6 mb-10"
+    >
+      <!-- Vista previa -->
+      <div class="bg-white shadow-md rounded-2xl p-6 border border-gray-100">
+        <h3 class="text-xl font-semibold text-gray-800 mb-2">
+          {{ item.name_information_solution }}
+        </h3>
+        <p class="text-gray-600 mb-4">
+          {{ item.description }}
+        </p>
+
+        <!-- Icono -->
+        <div v-if="item.icon_img" class="flex justify-center my-4">
+          <img
+            :src="item.icon_img"
+            alt="Icono"
+            class="h-24 w-24 object-contain rounded-lg border border-gray-200"
+          />
+        </div>
+
+        <!-- Video solo para el primer registro -->
+        <div v-if="item.url_video_yt" class="mt-4">
+          <iframe
+            class="w-full h-64 rounded-lg border"
+            :src="embedUrl(item.url_video_yt)"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
       </div>
     </div>
   </div>

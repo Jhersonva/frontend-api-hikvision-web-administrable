@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import Store from "../modules/Store.vue";
 import SecctionTitles from "../modules/SecctionTitles.vue";
 import ProductDetail from "../modules/ProductDetail.vue";
 import Products from "../modules/Products.vue";
@@ -29,6 +30,7 @@ import ImageCategories from "../modules/ImageCategories.vue";
 import SocialNetworks from "../modules/SocialNetworks.vue";
 import ContactInformationCompany from "../modules/ContactInformationCompany.vue";
 import ModulePlaceholder from "../components/common/ModulePlaceholder.vue";
+import Loading from "../components/common/Loading.vue";
 import Dashboard from "../views/Dashboard.vue";
 import Layout from "../components/layout/Layout.vue";
 import LoginForm from "../components/LoginForm.vue";
@@ -42,7 +44,7 @@ const moduleRoutes = [
   "portfolio_categories","portfolios","information_contact","payment_plan","choose_us",
   "testimonials","section_titles","specialty_categories","our_teams","partners","faqs",
   "banner_pages","blogs","category_products","products","product_details","product_installations",
-  "stores","contacts","contact_forms", "image_categories"
+  "contacts","contact_forms", "image_categories"
 ];
 
 const children = [
@@ -203,10 +205,15 @@ const children = [
     component: ImageCategories,
     meta: { title: "Categorías de Imágenes" }
   },
+  {
+    path: "stores",
+    component: Store,
+    meta: { title: "Stores" }
+  },
 
   // El resto con placeholder
   ...moduleRoutes
-    .filter(p => !["contact_information_company", "social_networks"].includes(p))
+    .filter(p => !["contact_information_company", "social_networks", "stores"].includes(p))
     .map(p => ({
       path: p,
       component: ModulePlaceholder,
@@ -220,12 +227,29 @@ const routes = [
   { path: "/", redirect: "/login" },
   { path: "/login", component: LoginForm },
   { path: "/register", component: RegisterForm },
-  { path: "/app", component: Layout, children }
+  { path: "/loading", component: Loading, props: true },
+  {
+    path: "/app",
+    component: Layout,
+    children: children, 
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+// Guard global
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem("token");
+
+  if (to.meta.requiresAuth && !token) {
+    alert("Cerrando sesión...");
+    next("/login");
+  } else {
+    next();
+  }
 });
 
 export default router;
